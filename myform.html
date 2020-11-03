@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>05211942000015-Safirah Melinia Febyanti</title>
+    <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form>
+        <div>
+            <span class="label">User Id </span>
+            <input type="text" class="userid" name="userid" />
+            <span class="error"> User id cannot be blank</span>
+        </div>
+        <div>
+            <span class="label">Password </span>
+            <input type="password" class="password" name="password" />
+            <span class="error"> Password cannot be blank</span>
+        </div>
+        <div>
+            <span class="label">Confirm Password </span>
+            <input type="password" class="confpass" name="confpass" />
+            <span class="error"> Password and Confirm Password don't match</span>
+        </div>
+    </form>
+    <script>
+        $(document).ready(function () {
+            $('.error').hide(); //hides the error class messages
+            $('.userid').blur(function () { //triggers the blur userid class messages
+                data = $('.userid').val(); //returns or sets the value attribute of the userid class
+                var len = data.length; //declarate variable "len" that contains the length of the number characteristic in infobox in string, 
+                if (len < 1) { //to specify a block of code to be executed, if a specified condition (len<1) is true
+                    $('.userid').next().show(); //returns the next sibling element of the userid class and shows the hidden, selected elements in userid class
+                    $('.password').attr('disabled', true); //  sets or returns attributes and values of the selected elements in password class, disable the password box.
+                    $('.confpass').attr('disabled', true); // sets or returns attributes and values of the selected elements in confpass class, dissable confpass box.
+                } else { //to specify a block of code to be executed, if the same condition (len<1) is false
+                    $('.userid').next().hide(); // returns the next sibling element of the userid class and hide selected elements in userid class
+                    $('.password').removeAttr('disabled'); //removes one or more attributes from the selected elements in password class
+                    $('.confpass').removeAttr('disabled'); //removes one or more attributes from the selected elements in confpass class
+                }
+            });
+            $('.password').blur(function () { //triggers the blur password class messages 
+                data = $('.password').val(); //returns or sets the value attribute of the userid class
+                var len = data.length; //declarate variable "len" that contains the length of the number characteristic in infobox in string, 
+                if (len < 1) { // to specify a block of code to be executed, if a specified condition (len<1) is true
+                    $('.password').next().show(); //returns the next sibling element of the password class and shows the hidden, selected elements in password class
+                    $('.confpass').attr('disabled', true); // sets or returns attributes and values of the selected elements in confpass class, disable confpass box.
+                } else { //to specify a block of code to be executed, if the same condition (len<1) is false
+                    $('.password').next().hide(); // returns the next sibling element of the password class and hide, selected elements in password class
+                    $('.confpass').removeAttr('disabled'); // removes one or more attributes from the selected elements in confpass class
+                }
+            });
+            $('.confpass').blur(function () { //triggers the blur confpass class messages 
+                if ($('.password').val() != //to specify a block of code to be executed, if a specified condition is tru and returns or sets the value attribute of the selected elements in password class
+                    $('.confpass').val()) { //returns or sets the value attribute of the selected elements in confpass class
+                    $('.confpass').next().show();// returns the next sibling element of the confpass class and shows the hidden, selected elements in confpass class
+                } else { //o specify a block of code to be executed, if the same condition is false
+                    $('.confpass').next().hide(); //returns the next sibling element of the confpass class and hide, selected elements in confpass class
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
